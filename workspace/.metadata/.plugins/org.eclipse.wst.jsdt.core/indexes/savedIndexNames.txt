@@ -1,0 +1,5 @@
+INDEX VERSION 1.3+D:\rama\rama\project-templates\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3327514867.index
+1510108156.index
+3796321097.index
+3776651108.index

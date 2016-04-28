@@ -1,0 +1,6 @@
+INDEX VERSION 1.127+D:\rama\rama\project-templates\workspace\.metadata\.plugins\org.eclipse.jdt.core
+3327514867.index
+3796321097.index
+3659744815.index
+3776651108.index
+1510108156.index
