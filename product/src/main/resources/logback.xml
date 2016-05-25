@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration file for LogBack (slf4J implementation) See here for more 
+	details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date{ISO8601} [%thread] %-5level %logger{36} - %msg %n
+			</Pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+
+	<appender name="dailyRollingFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${catalina.base}/logs/infoGPS/infogps.log</File>
+		<!-- <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+			daily rollover <FileNamePattern>logs/archive/infogps.%d{yyyy-MM-dd}.log</FileNamePattern> 
+			keep 10 days' worth of history <maxHistory>10</maxHistory> </rollingPolicy> -->
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/infoGPS/archive/infogps.%i.log
+			</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>20</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>5MB</maxFileSize>
+		</triggeringPolicy>
+
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+	</appender>
+
+
+	
+
+
+	<logger name="com.infogps" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="dailyRollingFileAppender" />
+		<appender-ref ref="consoleAppender" />
+	</logger>
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="dailyRollingFileAppender" />
+	</root>
+</configuration> 
