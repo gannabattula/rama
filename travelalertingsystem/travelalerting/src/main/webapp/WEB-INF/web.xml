@@ -24,7 +24,7 @@
         <!-- Register resources and providers -->
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>com.rama</param-value>
+            <param-value>com.im</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -34,6 +34,4 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
  
-
-  
 </web-app>
