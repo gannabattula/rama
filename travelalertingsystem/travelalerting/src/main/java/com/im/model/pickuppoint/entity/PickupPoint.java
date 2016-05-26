@@ -1,4 +1,4 @@
-package com.im.model.pickuppoints.entity;
+package com.im.model.pickuppoint.entity;
 
 public class PickupPoint {
 
