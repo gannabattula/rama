@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +44,12 @@ public abstract class AppRestService {
 	 * @param object the object
 	 * @param message the message
 	 * @param messageParam the message param
+	 * @param respNumber TODO
 	 * @param clientSession the client session
 	 * @return the response object
 	 */
-	protected ResponseObject buildSuccessResponse(Object object, String message, String messageParam) {
-		ResponseObject responseObject = new ResponseObject();
+	protected Response buildSuccessResponse(Object object, String message, String messageParam, int respNumber) {
+		/*ResponseObject responseObject = new ResponseObject();
 		responseObject.setResult(object);
 		// read from bundle using key 
 		Object[] args = new Object[] { messageParam };
@@ -59,7 +61,8 @@ public abstract class AppRestService {
 		//responseObject.setMessage(message);
 		
 		// clientsesion can be extended to make High availability session by maintinaing them in DB.
-		return responseObject;
+		return responseObject;*/
+		return Response.status(respNumber).entity(object).build();
 	}
 
 	/**
@@ -69,7 +72,7 @@ public abstract class AppRestService {
 	 * @param clientSession TODO
 	 * @return the response object
 	 */
-	protected ResponseObject buildValidationErrorResponse(ValidationException ve) {
+	protected Response buildValidationErrorResponse(ValidationException ve) {
 		ResponseObject responseObject = new ResponseObject();
 		
 		
@@ -81,7 +84,10 @@ public abstract class AppRestService {
 		
 		responseObject.setMessage(errMsg);
 		responseObject.setStatus("FAILURE");
-		return responseObject;
+		//return responseObject;
+		
+		return Response.status(ve.getAppErrorCode()).entity(errMsg).build();
+		
 	}
 
 	
@@ -110,7 +116,7 @@ public abstract class AppRestService {
 	 * @param clientSession the client session
 	 * @return the response object
 	 */
-	protected ResponseObject buildExceptionResponse(Exception e, String objectNameAndOperation){
+	protected Response buildExceptionResponse(Exception e, String objectNameAndOperation){
 		// log exception and stack track 
 		// or send mail to administrator
 		// log to db with key and exceptions info
@@ -133,7 +139,7 @@ public abstract class AppRestService {
 		responseObject.setMessage(errMsg);
 	
 		responseObject.setStatus("FAILURE");
-		return responseObject;
+		return Response.status(errorCode).entity(errMsg).build();
 	}
 	
 	/**

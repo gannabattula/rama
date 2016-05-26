@@ -1,19 +1,12 @@
 package com.im.model.route.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
 
+@XmlRootElement
 public class Route {
 
-	/*
-	 `id` bigint(20) NOT NULL,
-	  `route_type` varchar(45) DEFAULT NULL,
-	  `name` varchar(45) DEFAULT NULL,
-	  `start_latitude` decimal(10,2) DEFAULT NULL,
-	  `start_longitude` decimal(10,2) DEFAULT NULL,
-	  `end_latitude` decimal(10,2) DEFAULT NULL,
-	  `end_longitude` decimal(10,2) DEFAULT NULL,
-	 -- `vehicle_id` bigint(20) DEFAULT NULL,
-	  PRIMARY KEY (`id`)*/
+	
 	
 	private long routeId ;
 	private String routeType ;

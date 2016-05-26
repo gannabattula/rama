@@ -1,5 +1,8 @@
 package com.im.model.route.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -20,7 +23,7 @@ public class RouteServiceImpl implements RouteService {
 	RoutePersistance routePersistance;
 
 	
-	public Route getAllRoutes() throws ValidationException,AppException{
+	public List<Route> getAllRoutes() throws ValidationException,AppException{
 		if (logger.isDebugEnabled()) {
 			logger.debug("getPricingByProductId() - start ");
 		}
@@ -33,12 +36,40 @@ public class RouteServiceImpl implements RouteService {
 		}
 		*/
 		
-		Route findAll = routePersistance.findAll();
+		List<Route> findAll = routePersistance.findAll();
 
         if (logger.isDebugEnabled()) {
 			logger.debug("getPricingByProductId() - end ");
 		}
 		return  findAll;
+	}
+
+
+	public Route getRouteById(Long Id) throws AppException, ValidationException {
+		if (logger.isDebugEnabled()) {
+			logger.debug("getPricingByProductId() - start ");
+		}
+ 
+		
+		HashMap<String, Object[]> hashMap = new HashMap<String,Object[]>();
+		if(Id == null ){
+			
+			hashMap.put("value.required", new Object[]{"Route Id"});
+		}
+		
+
+		if(!hashMap.isEmpty()){
+			ValidationException valExc = new ValidationException(400,hashMap );
+			throw valExc;
+		}
+				
+		
+		Route findRouteById = routePersistance.findRouteById(Id);
+
+        if (logger.isDebugEnabled()) {
+			logger.debug("getPricingByProductId() - end ");
+		}
+		return  findRouteById;
 	}
 
 
