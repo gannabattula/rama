@@ -1,0 +1,19 @@
+16:33:45.187 [main] INFO  o.s.c.s.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48eff760: startup date [Sat May 28 16:33:45 IST 2016]; root of context hierarchy 
+16:33:45.247 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring-jersey.xml] 
+16:33:45.660 [main] INFO  o.s.c.s.PropertySourcesPlaceholderConfigurer - Loading properties file from class path resource [appinfo.properties] 
+16:33:45.667 [main] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+16:33:45.751 [main] INFO  o.s.j.d.DriverManagerDataSource - Loaded JDBC driver: org.sqlite.JDBC 
+16:33:45.814 [main] INFO  com.im.JavaStandalone - Bootstrapping the application Initializing Spring context. 
+16:33:45.816 [main] INFO  com.im.JavaStandalone - getRoutes START 
+16:33:45.821 [main] INFO  c.i.m.r.p.RoutePersistanceImpl - findAll : sql : select * from config_route 
+16:33:45.917 [main] INFO  com.im.JavaStandalone - getRouteBydId START 
+16:33:45.918 [main] INFO  c.i.m.r.p.RoutePersistanceImpl - findAll : sql : select * from config_route where id=:routeId 
+16:33:45.921 [main] INFO  com.im.JavaStandalone - pickupPointService START 
+16:33:45.921 [main] INFO  c.i.m.r.p.RoutePersistanceImpl - findPickupPointsByRouteId : sql : select * from config_pickup_point where route_id = :routeId; 
+16:33:45.923 [main] INFO  com.im.JavaStandalone - pickupPointService END 
+16:33:45.923 [main] INFO  com.im.JavaStandalone - getAllStudents START 
+16:33:45.923 [main] INFO  c.i.m.s.p.StudentPersistanceImpl - findAll : sql : select * from config_student 
+16:33:45.925 [main] INFO  com.im.JavaStandalone - getAllStudents START 
+16:33:45.925 [main] INFO  c.i.m.s.p.StudentPersistanceImpl - findById : sql : select * from config_student where id=:studentId 
+16:33:45.927 [main] INFO  com.im.JavaStandalone - getAllStudents START 
+16:33:45.927 [main] INFO  c.i.m.s.p.StudentPersistanceImpl - findStudentsByPickupPointsId : sql : select * from config_student where pickup_point_id= :pickupPointId			 

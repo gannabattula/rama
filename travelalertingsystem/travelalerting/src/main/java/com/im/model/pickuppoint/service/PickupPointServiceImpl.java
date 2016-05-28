@@ -21,6 +21,9 @@ public class PickupPointServiceImpl implements PickupPointService {
 	@Resource
 	PickupPointPersistance pckupPointPersistance;
 
+	/* (non-Javadoc)
+	 * @see com.im.model.pickuppoint.service.PickupPointService#getAllPickupPoints()
+	 */
 	public List<PickupPoint> getAllPickupPoints() {
 		if (logger.isDebugEnabled()) {
 			logger.debug("getAllPickupPoints() - start ");

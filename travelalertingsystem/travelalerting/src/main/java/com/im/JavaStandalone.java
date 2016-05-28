@@ -17,6 +17,8 @@ import com.im.model.pickuppoint.entity.PickupPoint;
 import com.im.model.pickuppoint.service.PickupPointService;
 import com.im.model.route.entity.Route;
 import com.im.model.route.service.RouteService;
+import com.im.model.student.entity.Student;
+import com.im.model.student.service.StudentService;
 
 public class JavaStandalone {
 
@@ -25,6 +27,12 @@ public class JavaStandalone {
 	  private JavaStandalone(){
 		  
 	  }
+	
+	/**
+	 * The main method.
+	 *
+	 * @param arg the arguments
+	 */
 	public static void main(String[] arg) {
 		/*
 		 * Bootstrapping
@@ -45,8 +53,11 @@ public class JavaStandalone {
 			
 			getPickupPointsByRouteId(1, applicationContext);
 			
-			
-			
+			getAllStudents(applicationContext);
+
+			getStudentById(1, applicationContext);
+		
+			getStudentsByPickupId(1, applicationContext);
 			
 			
 			// keep checking at intervals saying monitor is fine and processor is fine.
@@ -96,5 +107,34 @@ public class JavaStandalone {
 	}
 	
 	
+	
+	private static void getAllStudents(	ApplicationContext applicationContext) throws ValidationException, AppException {
+		logger.info("getAllStudents START");
+		StudentService studentService  = (StudentService) applicationContext
+						.getBean("studentService");
+		List<Student> findAll = studentService.getAllStudents();
+		 for(Student student : findAll){
+			 System.out.println("student name   : " +  student.getFirstName());
+		 }
+	}
+	
+	private static void getStudentsByPickupId(long  pickupId, ApplicationContext applicationContext) throws ValidationException, AppException {
+		logger.info("getAllStudents START");
+		StudentService studentService  = (StudentService) applicationContext
+						.getBean("studentService");
+		List<Student> findAll = studentService.getStudentsByPickupPointsId(pickupId);
+		 for(Student student : findAll){
+			 System.out.println("student name   : " +  student.getFirstName());
+		 }
+	}
+	
+	
+	private static void getStudentById(long  id, ApplicationContext applicationContext) throws ValidationException, AppException {
+		logger.info("getAllStudents START");
+		StudentService studentService  = (StudentService) applicationContext
+						.getBean("studentService");
+		Student findById = studentService.getById(id);
+			 System.out.println("student name   : " +  findById.getFirstName());
+	}
 	
 }

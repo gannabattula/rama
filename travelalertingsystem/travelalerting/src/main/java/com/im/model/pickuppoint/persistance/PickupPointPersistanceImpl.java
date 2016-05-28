@@ -24,15 +24,24 @@ import com.im.model.pickuppoint.persistance.PickupPointPersistance;
 import com.im.model.route.entity.Route;
 import com.im.model.route.persistance.RoutePersistanceImpl;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PickupPointPersistanceImpl.
+ */
 @Repository("pickupPointPersistance")
 public class PickupPointPersistanceImpl implements PickupPointPersistance {
  
+	/** The Constant logger. */
 	private static final Logger logger = LoggerFactory.getLogger(RoutePersistanceImpl.class);
 
 	
+	/** The named parameter jdbc template. */
 	@Resource(name="namedParameterJdbcTemplate")
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
+	/* (non-Javadoc)
+	 * @see com.im.model.pickuppoint.persistance.PickupPointPersistance#findAll()
+	 */
 	public List<PickupPoint> findAll(){
 		
 		String sql = SqlReader.getMessageByKey("PICKUP_POINT_ALL");
@@ -83,6 +92,9 @@ public class PickupPointPersistanceImpl implements PickupPointPersistance {
 
 
 	
+/* (non-Javadoc)
+ * @see com.im.model.pickuppoint.persistance.PickupPointPersistance#findPickupPointsByRouteId(long)
+ */
 public List<PickupPoint> findPickupPointsByRouteId(long routeId){
 		
 		String sql = SqlReader.getMessageByKey("PICKUP_POINT_BY_ROUTE_ID");
@@ -134,6 +146,9 @@ public List<PickupPoint> findPickupPointsByRouteId(long routeId){
 
 
 
+/* (non-Javadoc)
+ * @see com.im.model.pickuppoint.persistance.PickupPointPersistance#findById(long)
+ */
 public PickupPoint findById(long id){
 	
 	String sql = SqlReader.getMessageByKey("PICKUP_POINT_BY_ID");
