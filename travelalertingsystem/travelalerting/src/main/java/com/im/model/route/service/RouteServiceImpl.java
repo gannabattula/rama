@@ -25,16 +25,10 @@ public class RouteServiceImpl implements RouteService {
 	
 	public List<Route> getAllRoutes() throws ValidationException,AppException{
 		if (logger.isDebugEnabled()) {
-			logger.debug("getPricingByProductId() - start ");
+			logger.debug("getAllRoutes() - start ");
 		}
  
-	/*	
-		HashMap<String, Object[]> hashMap = new HashMap<String,Object[]>();
-		if(productId == null ){
-			
-			hashMap.put("value.required", new Object[]{"product Id"});
-		}
-		*/
+	
 		
 		List<Route> findAll = routePersistance.findAll();
 

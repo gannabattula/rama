@@ -48,13 +48,13 @@
 
 
 	<logger name="com.im" additivity="false">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="dailyRollingFileAppender" />
 		<appender-ref ref="consoleAppender" />
 	</logger>
 
 	<root>
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="consoleAppender" />
 		<appender-ref ref="dailyRollingFileAppender" />
 	</root>
